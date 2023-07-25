@@ -2,11 +2,7 @@ import React from 'react'
 
 export default function PrayingHandSvg(props: any) {
     return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 56 150"
-            >
+        <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 150">
             <g transform="translate(-40.951958,-70.431326)">
                 <path
                     id="path869"

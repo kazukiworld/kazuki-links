@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Rosehot';
+    src: url("../public/font/rosehot.ttf");
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-custom {
+    font-family: 'Rosehot', sans-serif;
+    /* Additional styling if needed */
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
