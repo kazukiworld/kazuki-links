@@ -56,7 +56,7 @@ export default function ProfileLinks() {
   };
 
   return (
-    <div className="z-20 fixed inset-0 flex flex-col justify-center items-center space-y-4">
+    <div className={`z-30 fixed inset-0 flex flex-col justify-center items-center space-y-4 transition-all duration-1000 ease-out ${modelLoading ? 'opacity-0':'opacity-100'}`}>
       <div
         className={`z-30 w-full p-4 lg:max-w-xl transition-all ${
           animate
@@ -85,7 +85,7 @@ export default function ProfileLinks() {
       </div>
 
       <p
-        className={`text-white font-custom m-2 p-4 border rounded border-white text-center lg:max-w-xl transition-all ${
+        className={`z-30 text-white font-custom m-2 p-4 border rounded border-white text-center lg:max-w-xl transition-all ${
           animate ? "opacity-0 invisible" : "opacity-100 delay-300 duration-500"
         }`}
       >
@@ -94,7 +94,7 @@ export default function ProfileLinks() {
       </p>
 
       <div
-        className={`z-20 w-full flex justify-center items-center transition-all duration-700 lg:max-w-3xl ${
+        className={`z-30 w-full flex justify-center items-center transition-all duration-700 lg:max-w-3xl ${
           animate
             ? "scale-0 -translate-y-36 opacity-50"
             : "scale-100 translate-y-0 opacity-100"
