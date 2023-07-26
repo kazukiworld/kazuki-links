@@ -5,6 +5,8 @@ import Image from "next/image";
 import ReachingHandSvg from "./svg/ReachingHandSvg";
 import ExitIcon from "./icon/ExitIcon";
 import { useNavStore } from "@/lib/zustand/navStore";
+import InstagramLogo from "./svg/InstagramLogo";
+import YoutubeLogo from "./svg/YoutubeLogo";
 
 type Content = {
   title: string;
@@ -56,13 +58,16 @@ export default function ProfileLinks() {
   return (
     <div className="z-20 fixed inset-0 flex flex-col justify-center items-center space-y-4">
       <div
-        className={`w-full p-4 lg:max-w-xl transition-all ${
+        className={`z-30 w-full p-4 lg:max-w-xl transition-all ${
           animate
             ? "scale-y-0 scale invisible"
             : "scale-y-100 delay-300 duration-700"
         }`}
       >
-        <div className="h-36 w-full bg-white rounded-[50%] flex justify-center items-center">
+        <div className="h-36 w-full bg-white rounded-[50%] flex justify-between items-center px-4">
+          <a className="w-8 h-8" href="https://www.instagram.com/kazukisworld">
+            <InstagramLogo className="fill-black/30 w-8 h-8" />
+          </a>
           <Image
             className="h-36 w-36 rounded-full border border-slate-50 grayscale"
             src={"/images/profile-pic.png"}
@@ -70,6 +75,9 @@ export default function ProfileLinks() {
             width={1000}
             height={1000}
           />
+          <a className="w-8 h-8" href="https://www.youtube.com/@kazukisworld5270">
+            <YoutubeLogo className="fill-black/30 w-8 h-8" />
+          </a>
         </div>
       </div>
 
@@ -78,8 +86,8 @@ export default function ProfileLinks() {
           animate ? "opacity-0 invisible" : "opacity-100 delay-300 duration-500"
         }`}
       >
-        Kazuki is a full-stack software engineer that loves art and design. Check out
-        his projects below:
+        Kazuki is a full-stack software engineer that loves art and design.
+        Check out his projects below:
       </p>
 
       <div
