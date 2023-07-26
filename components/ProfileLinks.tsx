@@ -70,7 +70,7 @@ export default function ProfileLinks() {
           </a>
           <Image
             className="h-36 w-36 rounded-full border border-slate-50 grayscale"
-            src={"/images/profile-pic.png"}
+            src={"/images/profile-pic.jpeg"}
             alt="Profile Picture"
             width={1000}
             height={1000}
