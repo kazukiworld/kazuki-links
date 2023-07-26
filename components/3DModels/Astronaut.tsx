@@ -6,11 +6,13 @@ Source: https://sketchfab.com/3d-models/chainsaw-man-darkness-demon-8218cc69a7a2
 Title: Chainsaw man - Darkness demon
 */
 
+import { useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSpring, a } from '@react-spring/three';
 import { useModelStore } from "@/lib/zustand/modelStore";
 
 export default function Astronaut(props: any) {
+    const {modelLoading, setModelLoading} = useModelStore();
     const { nodes, materials }: any = useGLTF("/models/chainsawman-astronaut.glb");
     const { animate } = useModelStore();
     const separation: number = 200; 
@@ -19,6 +21,13 @@ export default function Astronaut(props: any) {
         posAnim: [(animate ? 1600 : -2000), 180, -400],
         config: { mass: 10, tension: 600, friction: 200},
     });
+
+    useEffect(() => {
+        if(nodes && materials) {
+            setModelLoading(false);
+        }
+    }, [])
+    
 
     return (
         <a.group {...props} dispose={null} position={posAnim}>

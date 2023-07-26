@@ -3,10 +3,10 @@ import PrayingHandSvg from "@/components/svg/PrayingHandSvg";
 import { useModelStore } from "@/lib/zustand/modelStore";
 import Image from "next/image";
 import ReachingHandSvg from "./svg/ReachingHandSvg";
-import ExitIcon from "./icon/ExitIcon";
+import ExitIcon from "./svg/icon/ExitIcon";
 import { useNavStore } from "@/lib/zustand/navStore";
-import InstagramLogo from "./svg/InstagramLogo";
-import YoutubeLogo from "./svg/YoutubeLogo";
+import InstagramLogo from "./svg/icon/InstagramLogo";
+import YoutubeLogo from "./svg/icon/YoutubeLogo";
 
 type Content = {
   title: string;
@@ -16,7 +16,7 @@ type Content = {
 };
 
 export default function ProfileLinks() {
-  const { animate, setAnimate } = useModelStore();
+  const { animate, setAnimate, modelLoading } = useModelStore();
   const { content, setContent } = useNavStore();
 
   const contents: Content[] = [
@@ -75,7 +75,10 @@ export default function ProfileLinks() {
             width={1000}
             height={1000}
           />
-          <a className="w-8 h-8" href="https://www.youtube.com/@kazukisworld5270">
+          <a
+            className="w-8 h-8"
+            href="https://www.youtube.com/@kazukisworld5270"
+          >
             <YoutubeLogo className="fill-black/30 w-8 h-8" />
           </a>
         </div>
@@ -99,9 +102,8 @@ export default function ProfileLinks() {
       >
         <PrayingHandSvg className="w-1/4 fill-white" />
         <div
-          className={`flex flex-col justify-center items-center space-y-4 transition-all ${
-            animate ? "scale-x-0 w-0" : "scale-x-100 w-2/4"
-          }`}
+          className={`flex flex-col justify-center items-center space-y-4 transition-all 
+          ${animate ? "scale-x-0 w-0" : "scale-x-100 w-2/4"}`}
         >
           {contents.map(({ title }, i) => (
             <button
@@ -133,7 +135,7 @@ export default function ProfileLinks() {
         <div
           className={`bg-black/90 border border-white w-full flex flex-col justify-between font-custom rounded p-4 space-y-4 lg:max-w-3xl transition-all ${
             animate
-              ? "scale-y-100 delay-1000 duration-1000 h-full"
+              ? "scale-y-100 delay-700 duration-1000 h-full"
               : "scale-y-0 h-0"
           }`}
         >
