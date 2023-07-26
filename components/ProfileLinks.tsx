@@ -23,14 +23,14 @@ export default function ProfileLinks() {
     {
       title: "Mikazuki Studio",
       description:
-        "A creative web development studio based in the U.S, crafting bilingual digital experiences with Storytelling and Interactivity.",
+        "A creative web development studio crafting bilingual digital experiences with Storytelling and Interactivity (currently not accepting clients).",
       image: "/images/mikazuki-studio-logo.png",
       link: "https://www.mikazukistudio.com",
     },
     {
       title: "Slipstitch",
       description:
-        "A sustainable online fashion marketplace to buy and sell 1-of-1 fashion items (web app currently not supported).",
+        "A sustainable online fashion marketplace to buy and sell 1-of-1 fashion items (website currently archived).",
       image: "/images/slipstitch-logo.png",
       link: "https://www.slipstitch.app",
     },
@@ -44,7 +44,7 @@ export default function ProfileLinks() {
     {
       title: "Kazuki's World",
       description:
-        "An interactive 3D world that acts as a personal portfolio for people to learn more about Kazuki.",
+        "Introducing my personal portfolio: an immersive interactive 3D world that invites users to explore and delve into my story.",
       image: "/images/kazukisworld.png",
       link: "https://www.kazukisworld.com",
     },
@@ -89,8 +89,8 @@ export default function ProfileLinks() {
           animate ? "opacity-0 invisible" : "opacity-100 delay-300 duration-500"
         }`}
       >
-        Kazuki is a full-stack software engineer that loves art and design.
-        Check out his projects below:
+        My name is Kazuki Mori.  I write code, create animations, and upcycle clothes.
+        Check out some of my projects below:
       </p>
 
       <div

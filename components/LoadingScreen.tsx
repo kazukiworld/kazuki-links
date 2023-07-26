@@ -8,7 +8,7 @@ export default function LoadingScreen() {
 
   return (
     <div
-      className={`z-50 fixed inset-0 flex flex-col justify-center bg-black items-center transition-all ease-out duration-1000
+      className={`z-50 fixed inset-0 w-screen h-screen flex flex-col justify-center bg-black items-center transition-all ease-out duration-1000
       ${modelLoading ? "opacity-100" : "opacity-0 invisible"}
        `}
     >
