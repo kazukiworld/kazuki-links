@@ -16,7 +16,7 @@ export default function Astronaut(props: any) {
     const separation: number = 200; 
 
     const { posAnim } = useSpring({
-        posAnim: [(animate ? 1500 : -2000), 160, -400],
+        posAnim: [(animate ? 1600 : -2000), 180, -400],
         config: { mass: 10, tension: 600, friction: 200},
     });
 
