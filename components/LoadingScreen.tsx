@@ -1,10 +1,9 @@
 import { useModelStore } from "@/lib/zustand/modelStore";
 import React from "react";
-import PrayingHandSvg from "./svg/PrayingHandSvg";
 import ReachingHandSvg from "./svg/ReachingHandSvg";
 
 export default function LoadingScreen() {
-  const { modelLoading, setModelLoading } = useModelStore();
+  const { modelLoading } = useModelStore();
 
   return (
     <div

@@ -51,7 +51,7 @@ export default function ProfileLinks() {
   ];
 
   const handleLinkClicked = (i: number) => {
-    animate ? setAnimate(false) : setAnimate(true);
+    setAnimate(!animate);
     setContent(contents[i]);
   };
 
