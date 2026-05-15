@@ -6,7 +6,7 @@ import ReachingHandSvg from "./svg/ReachingHandSvg";
 import ExitIcon from "./svg/icon/ExitIcon";
 import { useNavStore } from "@/lib/zustand/navStore";
 import InstagramLogo from "./svg/icon/InstagramLogo";
-import YoutubeLogo from "./svg/icon/YoutubeLogo";
+import LinkedInLogo from "./svg/icon/LinkedInLogo";
 
 type Content = {
   title: string;
@@ -57,6 +57,7 @@ export default function ProfileLinks() {
 
   return (
     <div className={`z-30 fixed inset-0 flex flex-col justify-center items-center space-y-4 transition-all duration-1000 ease-out ${modelLoading ? 'opacity-0':'opacity-100'}`}>
+      
       <div
         className={`z-30 w-full p-4 lg:max-w-xl transition-all ${
           animate
@@ -77,9 +78,9 @@ export default function ProfileLinks() {
           />
           <a
             className="w-8 h-8"
-            href="https://www.youtube.com/@kazukisworld5270"
+            href="https://www.linkedin.com/in/kazukimori/"
           >
-            <YoutubeLogo className="fill-black/30 w-8 h-8" />
+            <LinkedInLogo className="fill-black/30 w-8 h-8" />
           </a>
         </div>
       </div>
