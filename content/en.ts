@@ -11,7 +11,7 @@ const messages: AppMessages = {
       "I build practical AI applications, production-ready web systems, and interactive 3D websites that connect engineering, automation, and visual experience.",
     badges: [
       "Former AI Startup Project Lead",
-      "5+ Years Across Engineering & Creative Tech",
+      "5+ Years of Development Experience",
       "Native-level English & Japanese",
       "M.S. Computer Science Candidate @ Georgia Tech",
     ],
@@ -32,28 +32,15 @@ const messages: AppMessages = {
     outcome: "Outcome",
   },
   introduction: {
-    intro:
-      "A brief introduction to my background in engineering, creative technology, and bilingual communication.",
     background: {
-      title: "Background",
       paragraphs: [
         "I'm Kazuki Mori, an AI Product Engineer and Creative Full-Stack Developer based in Japan and the U.S.",
         "My background combines production-focused engineering, creative technology, and bilingual communication.",
-        "At Corpy & Co., an international AI startup, I worked as a Project Leader / Full-Stack Developer on systems involving full-stack development, computer vision workflows, deployment support, debugging, and client communication.",
+        "At my previous AI startup, I worked as a Project Leader and Full-Stack Developer, contributing to production systems that involved full-stack development, computer vision workflows, deployment support, debugging, and client-facing technical communication.",
         "I work at a native level in both English and Japanese, helping bridge engineering teams, clients, and business stakeholders across languages.",
         "Before engineering, I worked with 2D/3D animation as a freelance creator. That background shapes how I think about motion, visual systems, interaction, and user experience.",
         "I'm currently pursuing a Master of Science in Computer Science at Georgia Tech, where I'm strengthening my foundation in machine learning, AI, and computer science.",
         "Today, I'm focused on building practical AI applications, production web systems, and interactive digital experiences.",
-      ],
-    },
-    interests: {
-      title: "Interests",
-      items: [
-        "Building software that is useful in real workflows",
-        "Connecting AI models with practical products",
-        "Designing interfaces that feel visual and intuitive",
-        "Communicating clearly across teams and languages",
-        "Combining reliable engineering with creative expression",
       ],
     },
   },
@@ -112,8 +99,8 @@ const messages: AppMessages = {
         {
           id: "gt-omscs",
           period: "Aug 2025 — Present",
-          title: "Georgia Institute of Technology (Online)",
-          subtitle: "Online Master of Science in Computer Science (OMSCS)",
+          title: "Georgia Institute of Technology",
+          subtitle: "M.S. Computer Science (Online)",
           status: "In progress",
           description:
             "Pursuing AI and machine learning systematically while working full-time. Studying evenings and weekends with a focus on applying coursework to real-world engineering work.",
@@ -121,8 +108,8 @@ const messages: AppMessages = {
         {
           id: "wgu-bs",
           period: "Apr 2022",
-          title: "Western Governors University (Online)",
-          subtitle: "B.S. Software Development",
+          title: "Western Governors University",
+          subtitle: "B.S. Software Development (Online)",
           status: "Graduated",
           description:
             "Competency-based online program: advance to the next subject after passing assignments and exams. Leveraged prior knowledge and practical experience to complete the bachelor's degree ahead of schedule.",
@@ -132,9 +119,27 @@ const messages: AppMessages = {
     credentials: {
       title: "Credentials",
       items: [
-        { id: "project-plus", period: "Jun 2022", title: "CompTIA Project+" },
-        { id: "itil", period: "Jan 2022", title: "ITIL Foundation" },
-        { id: "a-plus", period: "Jun 2021", title: "CompTIA A+" },
+        {
+          id: "project-plus",
+          period: "Jun 2022",
+          title: "CompTIA Project+",
+          subtitle:
+            "Validates IT and business project management skills, including planning, execution, communication, and lifecycle coordination.",
+        },
+        {
+          id: "itil",
+          period: "Jan 2022",
+          title: "ITIL Foundation",
+          subtitle:
+            "Validates foundational knowledge of IT service management best practices for delivering and supporting business-aligned IT services.",
+        },
+        {
+          id: "a-plus",
+          period: "Jun 2021",
+          title: "CompTIA A+",
+          subtitle:
+            "Validates foundational IT support skills across hardware, software, networking, security, and troubleshooting.",
+        },
       ],
     },
     skills: {
@@ -142,73 +147,32 @@ const messages: AppMessages = {
       keyResponsibilities: "Key Responsibilities",
       groups: [
         {
+          title: "Languages",
+          items: ["TypeScript", "Python", "and more..."],
+        },
+        {
           title: "Frontend",
-          items: [
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Tailwind CSS",
-            "Responsive UI",
-            "Frontend architecture",
-          ],
+          items: ["React", "Next.js", "Tailwind CSS", "and more..."],
         },
         {
           title: "Backend",
-          items: [
-            "Python",
-            "FastAPI",
-            "REST APIs",
-            "PostgreSQL",
-            "SQL",
-            "CSV/data workflows",
-            "Backend debugging",
-          ],
+          items: ["FastAPI", "and more..."],
+        },
+        {
+          title: "Database",
+          items: ["MySQL", "PostgreSQL", "MongoDB", "GraphQL", "and more..."],
         },
         {
           title: "AI / ML",
-          items: [
-            "Computer vision workflows",
-            "LLM applications",
-            "Model integration",
-            "Evaluation pipelines",
-            "Image similarity concepts",
-            "Recommendation system concepts",
-            "AI product prototyping",
-          ],
+          items: ["PyTorch", "Streamlit", "and more..."],
         },
         {
           title: "Creative Tech",
-          items: [
-            "Three.js",
-            "React Three Fiber",
-            "GSAP",
-            "Framer Motion",
-            "2D/3D animation",
-            "Interactive web design",
-            "Motion-based UI",
-          ],
+          items: ["Three.js", "React Three Fiber", "GSAP", "Framer Motion", "and more..."],
         },
         {
           title: "Tools / Infrastructure",
-          items: [
-            "Docker",
-            "Linux",
-            "GitLab CI/CD",
-            "Vercel",
-            "Nginx",
-            "Systemd",
-            "Production logging/debugging",
-          ],
-        },
-        {
-          title: "Communication",
-          items: [
-            "Native-level English",
-            "Native-level Japanese",
-            "Client-facing technical communication",
-            "Bilingual documentation",
-            "International team collaboration",
-          ],
+          items: ["Docker", "Linux", "Windows", "Git", "Vercel", "and more..."],
         },
       ],
     },

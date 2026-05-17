@@ -75,7 +75,7 @@ export default function ProfileLinks() {
           />
           <div className="relative z-10 space-y-4">
             <div className="flex justify-between items-center gap-4">
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              <h1 className="text-2xl sm:text-4xl font-bold tracking-tight">
                 Kazuki Mori
               </h1>
               <ul className="flex shrink-0 items-center gap-2.5 sm:gap-3">
@@ -84,23 +84,23 @@ export default function ProfileLinks() {
                     className="w-6 h-6"
                     href="https://www.linkedin.com/in/kazukimori/"
                   >
-                    <LinkedInLogo className="fill-white w-8 h-8" />
+                    <LinkedInLogo className="fill-white w-6 h-6" />
                   </a>
                 </li>
                 <li>
                   <a
-                    className="w-8 h-8"
+                    className="w-6 h-6"
                     href="https://www.instagram.com/kazukisworld"
                   >
-                    <InstagramLogo className="fill-white w-8 h-8" />
+                    <InstagramLogo className="fill-white w-6 h-6" />
                   </a>
                 </li>
                 <LocaleSwitcher />
               </ul>
             </div>
             <div className="space-y-2">
-              <h2 className="text-xl font-bold text-white">{tHero("tagline")}</h2>
-              <p className="text-left leading-relaxed text-zinc-100">
+              <h2 className="text-lg font-bold text-white">{tHero("tagline")}</h2>
+              <p className="text-sm text-left leading-relaxed text-zinc-200">
                 {tHero("description")}
               </p>
             </div>

@@ -48,14 +48,8 @@ export type AppMessages = {
     outcome: string;
   };
   introduction: {
-    intro: string;
     background: {
-      title: string;
       paragraphs: string[];
-    };
-    interests: {
-      title: string;
-      items: string[];
     };
   };
   experience: {
