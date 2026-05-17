@@ -1,12 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import {
   PageBody,
   PageIntro,
   Paragraph,
 } from "@/components/sections/helpers/PortfolioContent";
 
-const CONTACT_EMAIL = "kazukimori@gmail.com";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xlgvrokb";
 
 const REASON_OPTIONS = [
   "Job opportunity",
@@ -16,34 +17,33 @@ const REASON_OPTIONS = [
   "Other",
 ] as const;
 
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
 export default function Contact() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<FormStatus>("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus("submitting");
+
     const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const company = String(data.get("company") ?? "").trim();
-    const reason = String(data.get("reason") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
 
-    const subject = encodeURIComponent(
-      `[Portfolio] ${reason || "Contact"}${company ? ` — ${company}` : ""}`,
-    );
-    const body = encodeURIComponent(
-      [
-        name && `Name: ${name}`,
-        email && `Email: ${email}`,
-        company && `Company / Organization: ${company}`,
-        reason && `Reason: ${reason}`,
-        "",
-        message,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    );
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -64,14 +64,20 @@ export default function Contact() {
       </PageIntro>
 
       <PageBody>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form
+        action={FORMSPREE_ENDPOINT}
+        method="POST"
+        onSubmit={handleSubmit}
+        className="space-y-4"
+      >
         <label className="block space-y-1">
           <span className="text-xs font-bold text-white">Name</span>
           <input
             name="name"
             type="text"
             required
-            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none"
+            disabled={status === "submitting"}
+            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none disabled:opacity-50"
           />
         </label>
         <label className="block space-y-1">
@@ -80,7 +86,8 @@ export default function Contact() {
             name="email"
             type="email"
             required
-            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none"
+            disabled={status === "submitting"}
+            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none disabled:opacity-50"
           />
         </label>
         <label className="block space-y-1">
@@ -90,7 +97,8 @@ export default function Contact() {
           <input
             name="company"
             type="text"
-            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none"
+            disabled={status === "submitting"}
+            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none disabled:opacity-50"
           />
         </label>
         <label className="block space-y-1">
@@ -99,7 +107,8 @@ export default function Contact() {
             name="reason"
             required
             defaultValue=""
-            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white focus:border-white/50 focus:outline-none"
+            disabled={status === "submitting"}
+            className="w-full rounded border border-white/20 bg-black/40 px-3 py-2 text-white focus:border-white/50 focus:outline-none disabled:opacity-50"
           >
             <option value="" disabled>
               Select a reason
@@ -117,15 +126,27 @@ export default function Contact() {
             name="message"
             required
             rows={4}
-            className="w-full resize-y rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none"
+            disabled={status === "submitting"}
+            className="w-full resize-y rounded border border-white/20 bg-black/40 px-3 py-2 text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none disabled:opacity-50"
           />
         </label>
         <button
           type="submit"
-          className="w-full rounded border border-white/30 bg-white/10 py-2 font-bold text-white transition-colors hover:bg-white/20"
+          disabled={status === "submitting"}
+          className="w-full rounded border border-white/30 bg-white/10 py-2 font-bold text-white transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Send
+          {status === "submitting" ? "Sending…" : "Send"}
         </button>
+        {status === "success" && (
+          <p className="text-center text-sm text-white/80" role="status">
+            Message sent. I&apos;ll get back to you soon.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-center text-sm text-red-300" role="alert">
+            Something went wrong. Please try again.
+          </p>
+        )}
       </form>
       </PageBody>
     </div>
