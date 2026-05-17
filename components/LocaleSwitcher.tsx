@@ -4,7 +4,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { useLocale } from "next-intl";
 
 const linkBase =
-  "inline-flex min-h-8 min-w-[2.25rem] items-center justify-center rounded px-2.5 py-1.5 text-xs font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white";
+  "inline-flex min-h-6 min-w-[1.75rem] items-center justify-center rounded px-1.5 py-1 text-[11px] font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white";
 
 export default function LocaleSwitcher() {
   const locale = useLocale();
@@ -14,7 +14,7 @@ export default function LocaleSwitcher() {
       <div
         role="group"
         aria-label="Language"
-        className="flex items-center gap-0.5 rounded-md border border-white/25 bg-zinc-900/90 p-0.5"
+        className="flex items-center gap-0.5 rounded border border-white/25 bg-zinc-900/90 p-0.5"
       >
         <Link
           href="/"
