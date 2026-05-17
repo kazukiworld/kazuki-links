@@ -70,6 +70,7 @@ export default function ProfileLinks() {
             alt=""
             width={800}
             height={400}
+            priority
             className="pointer-events-none absolute bottom-0 left-1/2 w-full -translate-x-1/2 object-contain object-bottom opacity-10"
           />
           <div className="relative z-10 space-y-4">

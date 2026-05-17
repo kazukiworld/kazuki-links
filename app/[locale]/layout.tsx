@@ -1,5 +1,6 @@
 import "../globals.css";
 import SiteShell from "@/components/SiteShell";
+import { loadMessages } from "@/lib/i18n/load-messages";
 import { routing } from "@/lib/i18n/routing";
 import { Playfair_Display } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -23,7 +24,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const messages = (await import(`@/content/${locale}`)).default;
+
+  if (!hasLocale(routing.locales, locale)) {
+    return {};
+  }
+
+  const messages = await loadMessages(locale);
 
   return {
     title: messages.metadata.title,

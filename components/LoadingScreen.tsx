@@ -19,7 +19,7 @@ export default function LoadingScreen() {
           <ReachingHandSvg className="fill-white w-24 h-24 transform -scale-x-100" />
           <ReachingHandSvg className="fill-white w-24 h-24" />
         </div>
-        <h1 className="font-bold font-custom text-white">{t("loading")}</h1>
+        <h1 className="font-bold font-playfair text-white">{t("loading")}</h1>
         <div className="flex">
           <ReachingHandSvg className="fill-white w-24 h-24 transform -scale-x-100" />
           <ReachingHandSvg className="fill-white w-24 h-24" />

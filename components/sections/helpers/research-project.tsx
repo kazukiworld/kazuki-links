@@ -1,6 +1,5 @@
 import {
   BulletList,
-  MutedNote,
   StatusBadge,
   Subsection,
   TagList,
