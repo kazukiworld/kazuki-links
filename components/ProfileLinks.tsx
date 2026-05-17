@@ -3,7 +3,6 @@
 import Contact from "@/components/sections/contact";
 import Experience from "@/components/sections/experience";
 import Introduction from "@/components/sections/introduction";
-import Projects from "@/components/sections/projects";
 import Works from "@/components/sections/works";
 import PrayingHandSvg from "@/components/svg/PrayingHandSvg";
 import { useModelStore } from "@/lib/zustand/modelStore";
@@ -89,7 +88,7 @@ export default function ProfileLinks() {
                   </a>
                 </li>
                 <li>
-                  <a className="w-6 h-6" href="mailto:kazukimori@gmail.com">
+                  <a className="w-6 h-6" href="mailto:kazukidesigner@gmail.com">
                     <EmailIcon className="fill-white w-8 h-8" />
                   </a>
                 </li>

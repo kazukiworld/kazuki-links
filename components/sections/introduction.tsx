@@ -28,7 +28,7 @@ export default function Introduction() {
             technology, and bilingual communication.
           </Paragraph>
           <Paragraph>
-            At Corpy, an international AI startup, I worked as a Project Leader
+            At Corpy & Co., an international AI startup, I worked as a Project Leader
             / Full-Stack Developer on systems involving full-stack development,
             computer vision workflows, deployment support, debugging, and client
             communication.

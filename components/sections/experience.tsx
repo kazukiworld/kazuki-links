@@ -118,16 +118,36 @@ const CAREER_TIMELINE: TimelineItem[] = [
   },
   {
     id: "freelance",
-    period: "Until Jul 2023",
-    title: "Freelance 2D/3D Animation & Creative Production",
-    subtitle: "Independent creative work",
+    period: "Aug 2020 — Jul 2023",
+    title: "Freelance — Web Development, 2D/3D Animation & IT Support",
+    subtitle: "Solo developer (team of 1)",
     description: (
       <p>
-        Worked on 2D/3D animation and visual production, building a foundation
-        in motion, composition, visual storytelling, and creative direction.
-        This background now informs interactive web design, 3D websites,
-        motion-based interfaces, and visual software experiences.
+        Operated as a solo developer across full-stack product work, contract
+        web development and IT support for SMBs, and 2D/3D animation. Handled
+        discovery, design, implementation, and operations end to end, with direct
+        client communication in Japanese and English.
       </p>
+    ),
+    details: (
+      <div>
+        <p className="mb-2 text-sm font-bold text-white">Key Responsibilities</p>
+        <BulletList
+          items={[
+            "End-to-end ownership from user interviews and requirements through design, implementation, and operations",
+            "Requirements definition, screen design, and UI/UX design",
+            "Technology selection, architecture, and full-stack implementation",
+            "Infrastructure, security, and data management",
+            "Contract web development and IT support for small and mid-sized businesses",
+            "Business requirements interviews, workflow mapping, and improvement proposals",
+            "Landing page and business-application development",
+            "AI proof-of-concept prototyping and technical experimentation",
+            "Operational documentation and ongoing client support",
+            "2D/3D animation and visual production",
+            "Direct bilingual client communication (Japanese and English)",
+          ]}
+        />
+      </div>
     ),
   },
 ];
@@ -150,7 +170,7 @@ const EDUCATION_TIMELINE: TimelineItem[] = [
   },
   {
     id: "wgu-bs",
-    period: "Sep 2021 — Apr 2022",
+    period: "Apr 2022",
     title: "Western Governors University (Online)",
     subtitle: "B.S. Software Development",
     status: "Graduated",
