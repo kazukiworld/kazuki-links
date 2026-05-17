@@ -13,7 +13,6 @@ import ExitIcon from "./svg/icon/ExitIcon";
 import { useNavStore } from "@/lib/zustand/navStore";
 import InstagramLogo from "./svg/icon/InstagramLogo";
 import LinkedInLogo from "./svg/icon/LinkedInLogo";
-import EmailIcon from "./svg/icon/EmailIcon";
 import type { ComponentType } from "react";
 
 const SECTIONS: {
@@ -85,11 +84,6 @@ export default function ProfileLinks() {
                     href="https://www.instagram.com/kazukisworld"
                   >
                     <InstagramLogo className="fill-white w-8 h-8" />
-                  </a>
-                </li>
-                <li>
-                  <a className="w-6 h-6" href="mailto:kazukidesigner@gmail.com">
-                    <EmailIcon className="fill-white w-8 h-8" />
                   </a>
                 </li>
               </ul>
