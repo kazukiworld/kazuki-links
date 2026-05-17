@@ -1,97 +1,122 @@
-import React from "react";
+"use client";
+
+import LocaleSwitcher from "@/components/LocaleSwitcher";
+import Contact from "@/components/sections/contact";
+import Experience from "@/components/sections/experience";
+import Introduction from "@/components/sections/introduction";
+import Works from "@/components/sections/works";
 import PrayingHandSvg from "@/components/svg/PrayingHandSvg";
 import { useModelStore } from "@/lib/zustand/modelStore";
+import type { SectionId } from "@/lib/zustand/navStore";
+import { useNavStore } from "@/lib/zustand/navStore";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import type { ComponentType } from "react";
 import ReachingHandSvg from "./svg/ReachingHandSvg";
 import ExitIcon from "./svg/icon/ExitIcon";
-import { useNavStore } from "@/lib/zustand/navStore";
 import InstagramLogo from "./svg/icon/InstagramLogo";
-import YoutubeLogo from "./svg/icon/YoutubeLogo";
+import LinkedInLogo from "./svg/icon/LinkedInLogo";
 
-type Content = {
-  title: string;
-  description: string;
-  image: string | null;
-  link: string;
+const SECTION_COMPONENTS: Partial<Record<SectionId, ComponentType>> = {
+  introduction: Introduction,
+  experience: Experience,
+  works: Works,
+  contact: Contact,
 };
+
+const SECTION_IDS: SectionId[] = [
+  "introduction",
+  "experience",
+  "works",
+  "contact",
+];
 
 export default function ProfileLinks() {
   const { animate, setAnimate, modelLoading } = useModelStore();
-  const { content, setContent } = useNavStore();
+  const { activeSection, setActiveSection } = useNavStore();
+  const tHero = useTranslations("hero");
+  const tNav = useTranslations("nav");
 
-  const contents: Content[] = [
-    {
-      title: "Mikazuki Studio",
-      description:
-        "A creative web development studio crafting bilingual digital experiences with Storytelling and Interactivity (currently not accepting clients).",
-      image: "/images/mikazuki-studio-logo.png",
-      link: "https://www.mikazukistudio.com",
-    },
-    {
-      title: "Slipstitch",
-      description:
-        "A sustainable online fashion marketplace to buy and sell 1-of-1 fashion items (website currently archived).",
-      image: "/images/slipstitch-logo.png",
-      link: "https://www.slipstitch.app",
-    },
-    {
-      title: "Fade to Black",
-      description:
-        "A short film documentary about how humans deal with death. Contribution: animation and storyboarding.",
-      image: "/images/fade-to-black.png",
-      link: "https://www.viddsee.com/video/ftb-eliada-yap/67g1m?locale=en",
-    },
-    {
-      title: "Kazuki's World",
-      description:
-        "Introducing my personal portfolio: an immersive interactive 3D world that invites users to explore and delve into my story.",
-      image: "/images/kazukisworld.png",
-      link: "https://www.kazukisworld.com",
-    },
-  ];
-
-  const handleLinkClicked = (i: number) => {
-    animate ? setAnimate(false) : setAnimate(true);
-    setContent(contents[i]);
+  const handleSectionClick = (sectionId: SectionId) => {
+    setActiveSection(sectionId);
+    setAnimate(true);
   };
 
+  const handleCloseModal = () => {
+    setAnimate(false);
+    setActiveSection(null);
+  };
+
+  const ActiveSectionContent = activeSection
+    ? SECTION_COMPONENTS[activeSection]
+    : null;
+
+  const badges = tHero.raw("badges") as string[];
+
   return (
-    <div className={`z-30 fixed inset-0 flex flex-col justify-center items-center space-y-4 transition-all duration-1000 ease-out ${modelLoading ? 'opacity-0':'opacity-100'}`}>
+    <div
+      className={`font-playfair z-30 fixed inset-0 flex flex-col justify-center items-center space-y-4 transition-all duration-1000 ease-out ${modelLoading ? "opacity-0" : "opacity-100"}`}
+    >
       <div
-        className={`z-30 w-full p-4 lg:max-w-xl transition-all ${
+        className={`z-30 w-full p-4 lg:max-w-xl transition-all text-white ${
           animate
-            ? "scale-y-0 scale invisible"
-            : "scale-y-100 delay-300 duration-700"
+            ? "opacity-0 invisible"
+            : "delay-300 duration-1000 opacity-100"
         }`}
       >
-        <div className="h-36 w-full bg-white rounded-[50%] flex justify-between items-center px-4">
-          <a className="w-8 h-8" href="https://www.instagram.com/kazukisworld">
-            <InstagramLogo className="fill-black/30 w-8 h-8" />
-          </a>
+        <div className="relative">
           <Image
-            className="h-36 w-36 rounded-full border border-slate-50 grayscale"
-            src={"/images/profile-pic.jpeg"}
-            alt="Profile Picture"
-            width={1000}
-            height={1000}
+            src="/images/open-hand.png"
+            alt=""
+            width={800}
+            height={400}
+            priority
+            className="pointer-events-none absolute bottom-0 left-1/2 w-full -translate-x-1/2 object-contain object-bottom opacity-10"
           />
-          <a
-            className="w-8 h-8"
-            href="https://www.youtube.com/@kazukisworld5270"
-          >
-            <YoutubeLogo className="fill-black/30 w-8 h-8" />
-          </a>
+          <div className="relative z-10 space-y-4">
+            <div className="flex justify-between items-center gap-4">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                Kazuki Mori
+              </h1>
+              <ul className="flex shrink-0 items-center gap-2.5 sm:gap-3">
+                <li>
+                  <a
+                    className="w-6 h-6"
+                    href="https://www.linkedin.com/in/kazukimori/"
+                  >
+                    <LinkedInLogo className="fill-white w-8 h-8" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="w-8 h-8"
+                    href="https://www.instagram.com/kazukisworld"
+                  >
+                    <InstagramLogo className="fill-white w-8 h-8" />
+                  </a>
+                </li>
+                <LocaleSwitcher />
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-xl font-bold text-white">{tHero("tagline")}</h2>
+              <p className="text-left leading-relaxed text-zinc-100">
+                {tHero("description")}
+              </p>
+            </div>
+            <ul className="flex flex-wrap gap-2">
+              {badges.map((badge) => (
+                <li
+                  key={badge}
+                  className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs text-white/90"
+                >
+                  {badge}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-
-      <p
-        className={`z-30 text-white font-custom m-2 p-4 border rounded border-white text-center lg:max-w-xl transition-all ${
-          animate ? "opacity-0 invisible" : "opacity-100 delay-300 duration-500"
-        }`}
-      >
-        My name is Kazuki Mori.  I write code, create animations, and upcycle clothes.
-        Check out some of my projects below:
-      </p>
 
       <div
         className={`z-30 w-full flex justify-center items-center transition-all duration-700 lg:max-w-3xl ${
@@ -100,83 +125,68 @@ export default function ProfileLinks() {
             : "scale-100 translate-y-0 opacity-100"
         }`}
       >
-        <PrayingHandSvg className="w-1/4 fill-white" />
+        <PrayingHandSvg className="w-[30vh] fill-white translate-y-10 -translate-x-4" />
         <div
-          className={`flex flex-col justify-center items-center space-y-4 transition-all 
-          ${animate ? "scale-x-0 w-0" : "scale-x-100 w-2/4"}`}
+          className={`flex flex-col justify-center items-center space-y-2 duration-400
+          ${animate ? "scale-0 w-0" : "scale-x-100 w-full"}`}
         >
-          {contents.map(({ title }, i) => (
+          {SECTION_IDS.map((id, i) => (
             <button
-              key={i}
-              className="w-full p-4 rounded font-bold font-custom text-white"
-              onClick={() => handleLinkClicked(i)}
+              key={id}
+              className={`link-button-float-${i} w-full whitespace-nowrap py-2 font-bold text-white`}
+              onClick={() => handleSectionClick(id)}
             >
-              {title}
+              {tNav(id)}
             </button>
           ))}
         </div>
-        <PrayingHandSvg className="w-1/4 fill-white transform -scale-x-100" />
+        <PrayingHandSvg className="w-[30vh] fill-white translate-y-10 translate-x-4 -scale-x-100" />
       </div>
 
       <div
-        className={`fixed inset-0 w-full h-full p-4 flex flex-col justify-center items-center space-y-2 `}
+        className={`fixed inset-0 w-full h-full p-4 flex items-center justify-center`}
       >
-        <div
-          className={`w-full h-1/4 flex justify-center items-center transition-all ${
-            animate
-              ? "-translate-x-24 lg:-translate-x-80 delay-700 duration-1000 ease-in-out opacity-100"
-              : "translate-x-0 opacity-0 invisible"
-          }`}
-        >
-          <ReachingHandSvg
-            className={`fill-white transform -scale-y-100 w-auto h-full`}
-          />
-        </div>
-        <div
-          className={`bg-black/90 border border-white w-full flex flex-col justify-between font-custom rounded p-4 space-y-4 lg:max-w-3xl transition-all ${
-            animate
-              ? "scale-y-100 delay-700 duration-1000 h-full"
-              : "scale-y-0 h-0"
-          }`}
-        >
-          <div className="flex justify-between items-center text-white">
-            <h1 className="font-bold">{content?.title}</h1>
-            <ExitIcon
-              onClick={() => {
-                setAnimate(false);
-              }}
-              className="w-6 h-6 fill-white"
+        <div className="relative w-full lg:max-w-3xl">
+          <div
+            className={`absolute bottom-full left-0 right-0 w-full h-[25vh] flex justify-center items-center pointer-events-none transition-all ${
+              animate
+                ? "-translate-x-24 lg:-translate-x-80 delay-700 duration-1000 ease-in-out opacity-100"
+                : "translate-x-24 opacity-0 invisible"
+            }`}
+          >
+            <ReachingHandSvg
+              className="fill-white transform -scale-y-100 w-auto h-full"
             />
           </div>
-          <div className="flex flex-col justify-center items-center space-y-2">
-            {content?.image && (
-              <Image
-                src={content?.image}
-                className="w-24 h-24 rounded-full object-cover grayscale"
-                alt="Profile Picture"
-                width={1000}
-                height={1000}
-              />
-            )}
-            <p className="text-center w-full text-white">
-              {content?.description}
-            </p>
-          </div>
-          <a
-            href={content?.link}
-            className="w-full bg-white p-3 font-bold text-center"
+          <div
+            className={`relative z-10 bg-black/95 border h-[70vh] border-white w-full flex flex-col justify-between rounded p-4 space-y-4 transition-all ${
+              animate
+                ? "scale-y-100 delay-700 duration-1000"
+                : "-scale-y-0 h-0 min-h-0"
+            }`}
           >
-            Visit Link
-          </a>
-        </div>
-        <div
-          className={`w-full h-1/4 flex justify-center items-center transition-all ${
-            animate
-              ? "translate-x-24 lg:translate-x-80 delay-700 duration-1000 ease-in-out opacity-100"
-              : "translate-x-0 opacity-0 invisible"
-          }`}
-        >
-          <ReachingHandSvg className="fill-white transform -scale-x-100 h-1/4 w-auto h-full" />
+            <div className="flex justify-between items-start gap-4 pb-0 mb-0 text-white">
+              <h1 className="font-bold text-lg sm:text-xl">
+                {activeSection ? tNav(activeSection) : ""}
+              </h1>
+              <ExitIcon
+                onClick={handleCloseModal}
+                className="w-6 h-6 shrink-0 fill-white"
+              />
+            </div>
+            <div className="mt-6 min-h-0 flex-1 overflow-y-auto text-base">
+              {ActiveSectionContent && <ActiveSectionContent />}
+            </div>
+          </div>
+          <div
+            className={`absolute top-full left-0 right-0 w-full h-[25vh] flex justify-center items-center pointer-events-none transition-all ${
+              animate
+                ? "translate-x-24 lg:translate-x-80 delay-700 duration-1000 ease-in-out opacity-100"
+                : "-translate-x-24 opacity-0 invisible"
+            }`}
+          >
+            <ReachingHandSvg className="fill-white transform -scale-x-100 w-auto h-full" />
+          </div>
         </div>
       </div>
     </div>

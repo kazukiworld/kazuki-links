@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 @font-face {
     font-family: 'Rosehot';
@@ -13,4 +12,89 @@
 .font-custom {
     font-family: 'Rosehot', sans-serif;
     /* Additional styling if needed */
+}
+
+@keyframes link-button-float-0 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+    33% {
+        transform: translateY(-4px) rotate(-0.5deg);
+    }
+    66% {
+        transform: translateY(4px) rotate(-1.4deg);
+    }
+}
+
+@keyframes link-button-float-1 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1.2deg);
+    }
+    33% {
+        transform: translateY(-5px) rotate(0.6deg);
+    }
+    66% {
+        transform: translateY(5px) rotate(-0.8deg);
+    }
+}
+
+@keyframes link-button-float-2 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1.1deg);
+    }
+    33% {
+        transform: translateY(-4.5px) rotate(0.5deg);
+    }
+    66% {
+        transform: translateY(4.5px) rotate(-1.3deg);
+    }
+}
+
+@keyframes link-button-float-3 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-0.9deg);
+    }
+    33% {
+        transform: translateY(-4px) rotate(0.6deg);
+    }
+    66% {
+        transform: translateY(4px) rotate(-1deg);
+    }
+}
+
+.link-button-float-0 {
+    animation: link-button-float-0 4.6s ease-in-out 0.4s infinite;
+}
+
+.link-button-float-1 {
+    animation: link-button-float-1 4.7s ease-in-out 1.2s infinite;
+}
+
+.link-button-float-2 {
+    animation: link-button-float-2 3.7s ease-in-out 1.7s infinite;
+}
+
+.link-button-float-3 {
+    animation: link-button-float-3 4.9s ease-in-out 1.6s infinite;
+}
+
+@keyframes link-button-float-4 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-0.6deg);
+    }
+    33% {
+        transform: translateY(-2.5px) rotate(0.5deg);
+    }
+    66% {
+        transform: translateY(2.5px) rotate(-0.7deg);
+    }
+}
+
+.link-button-float-4 {
+    animation: link-button-float-4 4.5s ease-in-out 2s infinite;
 }

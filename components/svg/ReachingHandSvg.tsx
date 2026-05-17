@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ReachingHandSvg(props: any) {
+export default function ReachingHandSvg(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

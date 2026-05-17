@@ -9,24 +9,31 @@ Title: Chainsaw man - Darkness demon
 import { useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSpring, a } from '@react-spring/three';
+import type { ThreeElements } from "@react-three/fiber";
+import type { Material, Mesh } from "three";
 import { useModelStore } from "@/lib/zustand/modelStore";
 
-export default function Astronaut(props: any) {
-    const {modelLoading, setModelLoading} = useModelStore();
-    const { nodes, materials }: any = useGLTF("/models/chainsawman-astronaut.glb");
+type AstronautGLTF = {
+    nodes: Record<string, Mesh>;
+    materials: Record<string, Material>;
+};
+
+export default function Astronaut(props: ThreeElements["group"]) {
+    const { setModelLoading } = useModelStore();
+    const { nodes, materials } = useGLTF("/models/chainsawman-astronaut.glb") as unknown as AstronautGLTF;
     const { animate } = useModelStore();
     const separation: number = 200; 
 
-    const { posAnim } = useSpring({
+    const { posAnim } = useSpring<{ posAnim: [number, number, number] }>({
         posAnim: [(animate ? 1600 : -2000), 180, -400],
         config: { mass: 10, tension: 600, friction: 200},
     });
 
     useEffect(() => {
-        if(nodes && materials) {
+        if (nodes && materials) {
             setModelLoading(false);
         }
-    }, [])
+    }, [nodes, materials, setModelLoading])
     
 
     return (
