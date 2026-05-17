@@ -1,14 +1,22 @@
-export type TimelineItem = {
-  id: string;
-  period: string;
-  title: string;
-  subtitle?: string;
-  status?: string;
-  description?: import("react").ReactNode;
-  details?: import("react").ReactNode;
+"use client";
+
+import type { TimelineEntry } from "@/lib/i18n/types";
+import { useTranslations } from "next-intl";
+
+export type TimelineItem = TimelineEntry;
+
+type ExperienceTimelineProps = {
+  items: TimelineEntry[];
+  responsibilitiesLabel?: string;
 };
 
-export function ExperienceTimeline({ items }: { items: TimelineItem[] }) {
+export function ExperienceTimeline({
+  items,
+  responsibilitiesLabel,
+}: ExperienceTimelineProps) {
+  const t = useTranslations("experience.skills");
+  const label = responsibilitiesLabel ?? t("keyResponsibilities");
+
   return (
     <ol className="relative ml-1.5 space-y-6 border-l border-white/25">
       {items.map((item) => (
@@ -30,9 +38,18 @@ export function ExperienceTimeline({ items }: { items: TimelineItem[] }) {
             ) : null}
           </div>
           {item.description ? (
-            <div className="mt-2 text-white/85">{item.description}</div>
+            <p className="mt-2 text-white/85">{item.description}</p>
           ) : null}
-          {item.details ? <div className="mt-3">{item.details}</div> : null}
+          {item.responsibilities && item.responsibilities.length > 0 ? (
+            <div className="mt-3">
+              <p className="mb-2 text-sm font-bold text-white">{label}</p>
+              <ul className="list-inside list-disc space-y-1 text-white/85">
+                {item.responsibilities.map((entry) => (
+                  <li key={entry}>{entry}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </li>
       ))}
     </ol>

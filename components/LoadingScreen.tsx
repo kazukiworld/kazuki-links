@@ -1,9 +1,12 @@
+"use client";
+
 import { useModelStore } from "@/lib/zustand/modelStore";
-import React from "react";
+import { useTranslations } from "next-intl";
 import ReachingHandSvg from "./svg/ReachingHandSvg";
 
 export default function LoadingScreen() {
   const { modelLoading } = useModelStore();
+  const t = useTranslations();
 
   return (
     <div
@@ -16,7 +19,7 @@ export default function LoadingScreen() {
           <ReachingHandSvg className="fill-white w-24 h-24 transform -scale-x-100" />
           <ReachingHandSvg className="fill-white w-24 h-24" />
         </div>
-        <h1 className="font-bold font-custom text-white">Loading...</h1>
+        <h1 className="font-bold font-custom text-white">{t("loading")}</h1>
         <div className="flex">
           <ReachingHandSvg className="fill-white w-24 h-24 transform -scale-x-100" />
           <ReachingHandSvg className="fill-white w-24 h-24" />

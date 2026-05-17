@@ -1,5 +1,6 @@
 "use client";
 
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import Contact from "@/components/sections/contact";
 import Experience from "@/components/sections/experience";
 import Introduction from "@/components/sections/introduction";
@@ -7,29 +8,34 @@ import Works from "@/components/sections/works";
 import PrayingHandSvg from "@/components/svg/PrayingHandSvg";
 import { useModelStore } from "@/lib/zustand/modelStore";
 import type { SectionId } from "@/lib/zustand/navStore";
+import { useNavStore } from "@/lib/zustand/navStore";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import type { ComponentType } from "react";
 import ReachingHandSvg from "./svg/ReachingHandSvg";
 import ExitIcon from "./svg/icon/ExitIcon";
-import { useNavStore } from "@/lib/zustand/navStore";
 import InstagramLogo from "./svg/icon/InstagramLogo";
 import LinkedInLogo from "./svg/icon/LinkedInLogo";
-import type { ComponentType } from "react";
 
-const SECTIONS: {
-  id: SectionId;
-  title: string;
-  Component: ComponentType;
-}[] = [
-  { id: "introduction", title: "Introduction", Component: Introduction },
-  { id: "experience", title: "Experience", Component: Experience },
-  { id: "works", title: "Works", Component: Works },
-  // { id: "projects", title: "Personal Projects", Component: Projects },
-  { id: "contact", title: "Contact", Component: Contact },
+const SECTION_COMPONENTS: Partial<Record<SectionId, ComponentType>> = {
+  introduction: Introduction,
+  experience: Experience,
+  works: Works,
+  contact: Contact,
+};
+
+const SECTION_IDS: SectionId[] = [
+  "introduction",
+  "experience",
+  "works",
+  "contact",
 ];
 
 export default function ProfileLinks() {
   const { animate, setAnimate, modelLoading } = useModelStore();
   const { activeSection, setActiveSection } = useNavStore();
+  const tHero = useTranslations("hero");
+  const tNav = useTranslations("nav");
 
   const handleSectionClick = (sectionId: SectionId) => {
     setActiveSection(sectionId);
@@ -41,8 +47,11 @@ export default function ProfileLinks() {
     setActiveSection(null);
   };
 
-  const section = SECTIONS.find((entry) => entry.id === activeSection);
-  const ActiveSectionContent = section?.Component ?? null;
+  const ActiveSectionContent = activeSection
+    ? SECTION_COMPONENTS[activeSection]
+    : null;
+
+  const badges = tHero.raw("badges") as string[];
 
   return (
     <div
@@ -55,7 +64,6 @@ export default function ProfileLinks() {
             : "delay-300 duration-1000 opacity-100"
         }`}
       >
-        {/* Hero Description */}
         <div className="relative">
           <Image
             src="/images/open-hand.png"
@@ -69,7 +77,7 @@ export default function ProfileLinks() {
               <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
                 Kazuki Mori
               </h1>
-              <ul className="flex shrink-0 items-center gap-3">
+              <ul className="flex shrink-0 items-center gap-2.5 sm:gap-3">
                 <li>
                   <a
                     className="w-6 h-6"
@@ -86,31 +94,24 @@ export default function ProfileLinks() {
                     <InstagramLogo className="fill-white w-8 h-8" />
                   </a>
                 </li>
+                <LocaleSwitcher />
               </ul>
             </div>
             <div className="space-y-2">
-              <h2 className="text-xl font-bold text-white">
-                AI Product Engineer / Creative Full-Stack Developer
-              </h2>
+              <h2 className="text-xl font-bold text-white">{tHero("tagline")}</h2>
               <p className="text-left leading-relaxed text-zinc-100">
-                I build practical AI applications, production-ready web systems,
-                and interactive 3D websites that connect engineering, automation,
-                and visual experience.
+                {tHero("description")}
               </p>
             </div>
             <ul className="flex flex-wrap gap-2">
-              <li className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs text-white/90">
-                Former AI Startup Project Lead
-              </li>
-              <li className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs text-white/90">
-                5+ Years Across Engineering & Creative Tech
-              </li>
-              <li className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs text-white/90">
-                Native-level English & Japanese
-              </li>
-              <li className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs text-white/90">
-                M.S. Computer Science Candidate @ Georgia Tech
-              </li>
+              {badges.map((badge) => (
+                <li
+                  key={badge}
+                  className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs text-white/90"
+                >
+                  {badge}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -128,13 +129,13 @@ export default function ProfileLinks() {
           className={`flex flex-col justify-center items-center space-y-2 duration-400
           ${animate ? "scale-0 w-0" : "scale-x-100 w-full"}`}
         >
-          {SECTIONS.map(({ id, title }, i) => (
+          {SECTION_IDS.map((id, i) => (
             <button
               key={id}
               className={`link-button-float-${i} w-full whitespace-nowrap py-2 font-bold text-white`}
               onClick={() => handleSectionClick(id)}
             >
-              {title}
+              {tNav(id)}
             </button>
           ))}
         </div>
@@ -165,7 +166,7 @@ export default function ProfileLinks() {
           >
             <div className="flex justify-between items-start gap-4 pb-0 mb-0 text-white">
               <h1 className="font-bold text-lg sm:text-xl">
-                {section?.title ?? ""}
+                {activeSection ? tNav(activeSection) : ""}
               </h1>
               <ExitIcon
                 onClick={handleCloseModal}
