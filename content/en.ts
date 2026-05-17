@@ -6,7 +6,7 @@ const messages: AppMessages = {
     description: "Links to Kazuki's Projects and Socials",
   },
   hero: {
-    tagline: "AI Product Engineer / Creative Full-Stack Developer",
+    tagline: "Full-Stack Software Engineer Specializing in AI/ML",
     description:
       "I build practical AI applications, production-ready web systems, and interactive 3D websites that connect engineering, automation, and visual experience.",
     badges: [
