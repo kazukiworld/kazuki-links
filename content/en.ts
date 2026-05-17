@@ -179,7 +179,7 @@ const messages: AppMessages = {
   },
   works: {
     intro:
-      "Case studies from my work at Corpy & Co., Inc. and as a freelancer across AI, manufacturing, and autonomous-driving projects. Confidential client work limits what can be shared; each entry covers my role, scope, and outcomes.",
+      "Case studies from my work at an AI startup and as a freelancer across AI, manufacturing, and autonomous-driving projects. Confidential client work limits what can be shared; each entry covers my role, scope, and outcomes.",
     items: [
       {
         id: "work-01",
@@ -260,7 +260,7 @@ const messages: AppMessages = {
           "Vehicle control integration, AI model R&D liaison, and bilingual client delivery",
         study: {
           overview:
-            "Worked across autonomous-driving initiatives at Corpy & Co., Inc.: (1) a vehicle control system integrating AI-based object recognition, self-localization, and path planning (agile; Jan 2025 – present), and (2) client liaison for R&D and improvement of image-similarity, object-recognition, and auto-annotation models (waterfall; Oct 2024 – Oct 2025). Served as engineer, client liaison, or both depending on the project.",
+            "Worked across autonomous-driving initiatives at an AI startup: (1) a vehicle control system integrating AI-based object recognition, self-localization, and path planning (agile; Jan 2025 – present), and (2) client liaison for R&D and improvement of image-similarity, object-recognition, and auto-annotation models (waterfall; Oct 2024 – Oct 2025). Served as engineer, client liaison, or both depending on the project.",
           role: "Engineer / Client liaison",
           workedOn: [
             "Detailed design, implementation, and testing of autonomous-driving software",
@@ -371,11 +371,8 @@ const messages: AppMessages = {
     ],
   },
   contact: {
-    intro: [
-      "Interested in working together?",
-      "I'm open to AI engineering roles, full-stack development opportunities, creative technology projects, and selected freelance work involving AI applications, automation tools, computer vision workflows, or interactive web experiences.",
-      "Please reach out through the form below.",
-    ],
+    intro:
+      "Open to AI implementation and development, full-stack development, and creative project opportunities. Reach out using the form below.",
     form: {
       name: "Name",
       email: "Email",

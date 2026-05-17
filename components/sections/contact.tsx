@@ -41,14 +41,10 @@ export default function Contact() {
     }
   };
 
-  const introParagraphs = t.raw("intro") as string[];
-
   return (
     <div className="pb-2">
       <PageIntro>
-        {introParagraphs.map((text) => (
-          <Paragraph key={text}>{text}</Paragraph>
-        ))}
+        <Paragraph>{t("intro")}</Paragraph>
       </PageIntro>
 
       <PageBody>
