@@ -18,14 +18,6 @@ export function Paragraph({ children }: { children: React.ReactNode }) {
   return <p>{children}</p>;
 }
 
-export function MutedNote({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-base leading-relaxed text-white/60 italic">
-      {children}
-    </p>
-  );
-}
-
 export function Subsection({
   title,
   children,
@@ -41,33 +33,3 @@ export function Subsection({
   );
 }
 
-export function BulletList({ items }: { items: string[] }) {
-  return (
-    <ul className="list-disc space-y-1.5 pl-5">
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  );
-}
-
-export function TagList({ items }: { items: string[] }) {
-  return (
-    <p className="text-base text-white/80">
-      {items.map((item, i) => (
-        <span key={item}>
-          {i > 0 && <span className="text-white/40"> · </span>}
-          {item}
-        </span>
-      ))}
-    </p>
-  );
-}
-
-export function StatusBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block rounded-md bg-zinc-800 px-2.5 py-1 text-base text-white/80">
-      {children}
-    </span>
-  );
-}

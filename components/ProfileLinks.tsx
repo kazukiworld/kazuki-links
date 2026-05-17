@@ -55,10 +55,10 @@ export default function ProfileLinks() {
 
   return (
     <div
-      className={`font-playfair z-30 fixed inset-0 flex flex-col justify-center items-center space-y-4 transition-all duration-1000 ease-out ${modelLoading ? "opacity-0" : "opacity-100"}`}
+      className={`font-playfair z-30 fixed inset-0 flex flex-col justify-center items-center space-y-4 p-8 pb-0 transition-all duration-1000 ease-out ${modelLoading ? "opacity-0" : "opacity-100"}`}
     >
       <div
-        className={`z-30 w-full p-4 lg:max-w-xl transition-all text-white ${
+        className={`z-30 w-full lg:max-w-xl transition-all text-white ${
           animate
             ? "opacity-0 invisible"
             : "delay-300 duration-1000 opacity-100"

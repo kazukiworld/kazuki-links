@@ -26,8 +26,10 @@ export default function Works() {
             id: work.id,
             title: work.title,
             content: (
-              <div className="space-y-2 pb-1">
-                <p className="text-sm text-white/70">{work.subtitle}</p>
+              <div className="space-y-5 pb-1 pt-1">
+                <p className="text-sm font-medium leading-relaxed text-white/90">
+                  {work.subtitle}
+                </p>
                 <CaseStudyBody study={work.study} />
               </div>
             ),

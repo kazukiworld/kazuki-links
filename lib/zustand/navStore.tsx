@@ -2,7 +2,6 @@ import { create } from "zustand";
 
 export type SectionId =
   | "works"
-  | "projects"
   | "experience"
   | "introduction"
   | "contact";

@@ -64,7 +64,7 @@ export type AppMessages = {
     items: WorkEntry[];
   };
   contact: {
-    intro: string[];
+    intro: string;
     form: {
       name: string;
       email: string;
