@@ -1,18 +1,18 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
-export const useNavStore = create<NavStore>((set) => ({
-    content: {title: '', description: '', image: '', link: ''},
-    setContent: (content: Content) => set({ content: content }),
-}));
+export type SectionId =
+  | "works"
+  | "projects"
+  | "experience"
+  | "introduction"
+  | "contact";
 
 type NavStore = {
-    content: Content;
-    setContent: (content: Content) => void;
+  activeSection: SectionId | null;
+  setActiveSection: (section: SectionId | null) => void;
 };
 
-type Content = {
-    title: string,
-    description: string, 
-    image: string | null,
-    link: string
-}
+export const useNavStore = create<NavStore>((set) => ({
+  activeSection: null,
+  setActiveSection: (activeSection) => set({ activeSection }),
+}));
